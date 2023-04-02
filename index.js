@@ -12,6 +12,7 @@ const { exit } = require("process");
 const { resolve } = require("path");
 const { reject } = require("lodash");
 const {Headers} = require('node-fetch');
+const { boolean } = require("webidl-conversions");
 
 
 //adding useragent to avoid ip bans
@@ -100,7 +101,7 @@ const getVideoWM = async (url) => {
 
 const getVideoNoWM = async (url) => {
     const idVideo = await getIdVideo(url)
-    const API_URL = `https://api19-core-useast5.us.tiktokv.com/aweme/v1/feed/?aweme_id=${idVideo}&version_code=262&app_name=musical_ly&channel=App&device_id=null&os_version=14.4.2&device_platform=iphone&device_type=iPhone9`;
+    const API_URL = `http://api16-normal-c-useast1a.tiktokv.com/aweme/v1/feed/?aweme_id=${idVideo}&version_code=262&app_name=musical_ly&channel=App&device_id=null&os_version=14.4.2&device_platform=iphone&device_type=iPhone9`;
     const request = await fetch(API_URL, {
         method: "GET",
         headers : headers
@@ -121,10 +122,10 @@ const getVideoNoWM = async (url) => {
 }
 
 const getListVideoByUsername = async (username) => {
-    var baseUrl = await generateUrlProfile(username)
-    const browser = await puppeteer.launch({
-        headless: true,
-    })
+    var baseUrl = await generateUrlProfile(username);
+        const browser = await puppeteer.launch({
+            headless: false
+        })
     const page = await browser.newPage()
     page.setUserAgent(
         "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4182.0 Safari/537.36"
@@ -175,7 +176,7 @@ const getIdVideo = (url) => {
 }
 
 (async () => {    
-    const header = "\r\n \/$$$$$$$$ \/$$$$$$ \/$$   \/$$ \/$$$$$$$$ \/$$$$$$  \/$$   \/$$       \/$$$$$$$   \/$$$$$$  \/$$      \/$$ \/$$   \/$$ \/$$        \/$$$$$$   \/$$$$$$  \/$$$$$$$  \/$$$$$$$$ \/$$$$$$$ \r\n|__  $$__\/|_  $$_\/| $$  \/$$\/|__  $$__\/\/$$__  $$| $$  \/$$\/      | $$__  $$ \/$$__  $$| $$  \/$ | $$| $$$ | $$| $$       \/$$__  $$ \/$$__  $$| $$__  $$| $$_____\/| $$__  $$\r\n   | $$     | $$  | $$ \/$$\/    | $$  | $$  \\ $$| $$ \/$$\/       | $$  \\ $$| $$  \\ $$| $$ \/$$$| $$| $$$$| $$| $$      | $$  \\ $$| $$  \\ $$| $$  \\ $$| $$      | $$  \\ $$\r\n   | $$     | $$  | $$$$$\/     | $$  | $$  | $$| $$$$$\/        | $$  | $$| $$  | $$| $$\/$$ $$ $$| $$ $$ $$| $$      | $$  | $$| $$$$$$$$| $$  | $$| $$$$$   | $$$$$$$\/\r\n   | $$     | $$  | $$  $$     | $$  | $$  | $$| $$  $$        | $$  | $$| $$  | $$| $$$$_  $$$$| $$  $$$$| $$      | $$  | $$| $$__  $$| $$  | $$| $$__\/   | $$__  $$\r\n   | $$     | $$  | $$\\  $$    | $$  | $$  | $$| $$\\  $$       | $$  | $$| $$  | $$| $$$\/ \\  $$$| $$\\  $$$| $$      | $$  | $$| $$  | $$| $$  | $$| $$      | $$  \\ $$\r\n   | $$    \/$$$$$$| $$ \\  $$   | $$  |  $$$$$$\/| $$ \\  $$      | $$$$$$$\/|  $$$$$$\/| $$\/   \\  $$| $$ \\  $$| $$$$$$$$|  $$$$$$\/| $$  | $$| $$$$$$$\/| $$$$$$$$| $$  | $$\r\n   |__\/   |______\/|__\/  \\__\/   |__\/   \\______\/ |__\/  \\__\/      |_______\/  \\______\/ |__\/     \\__\/|__\/  \\__\/|________\/ \\______\/ |__\/  |__\/|_______\/ |________\/|__\/  |__\/\r\n\n by n0l3r (https://github.com/n0l3r)\n"
+    const header = "\r\n/$$$$$$$$ /$$ /$$         /$$               /$$\n|__  $$__/|__/| $$        | $$              | $$\n   | $$    /$$| $$   /$$ /$$$$$$    /$$$$$$ | $$   /$$\n   | $$   | $$| $$  /$$/|_  $$_/   /$$__  $$| $$  /$$/\n   | $$   | $$| $$$$$$/   | $$    | $$  \ $$| $$$$$$/\n   | $$   | $$| $$_  $$   | $$ /$$| $$  | $$| $$_  $$\n   | $$   | $$| $$ \  $$  |  $$$$/|  $$$$$$/| $$ \  $$\n   |__/   |__/|__/  \__/   \___/   \______/ |__/  \__/ \n __  _\n|  \|  |          by n0l3r (https://github.com/n0l3r) edited by da.rch (https://github.com/matthewcoolio)   \n| o ) |_\n|__/|___|"
     console.log(chalk.blue(header))
     const choice = await getChoice();
     var listVideo = [];
