@@ -1,5 +1,9 @@
 <h1 style="align: center;">Tiktok Downloader</h1>
 
+```
+Fixed program, now works as intended.
+```
+
 <h2>Installation</h2>
 run in your terminal:
 
