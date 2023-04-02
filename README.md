@@ -9,3 +9,8 @@ cd tiktok-downloader
 npm i
 node index
 ```
+ **Note**
+ 
+ You will need to create a downloads folder in the ```/tiktok-downloader``` folder, otherwise this will throw out an error.
+ Be careful with the tiktok channels you download on, as this will take a while to download 100+ videos.
+
