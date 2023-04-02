@@ -100,7 +100,7 @@ const getVideoWM = async (url) => {
 
 const getVideoNoWM = async (url) => {
     const idVideo = await getIdVideo(url)
-    const API_URL = `https://api19-core-useast5.us.tiktokv.com/aweme/v1/feed/?aweme_id=${idVideo}&version_code=262&app_name=musical_ly&channel=App&device_id=null&os_version=14.4.2&device_platform=iphone&device_type=iPhone9`;
+    const API_URL = `http://api16-normal-c-useast1a.tiktokv.com/aweme/v1/feed/?aweme_id=${idVideo}&version_code=262&app_name=musical_ly&channel=App&device_id=null&os_version=14.4.2&device_platform=iphone&device_type=iPhone9`;
     const request = await fetch(API_URL, {
         method: "GET",
         headers : headers
