@@ -28,6 +28,9 @@ headersWm.append(
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36'
 )
 
+if (!fs.existsSync('downloads')) {
+  fs.mkdirSync('downloads')
+}
 const getChoice = () =>
   new Promise((resolve, reject) => {
     inquirer
