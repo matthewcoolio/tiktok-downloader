@@ -2,7 +2,7 @@
     Github : https://github.com/n0l3r
     Don't remove credit.
 
-    Fixed by Branon/Apoc
+    Fixed by Brandon/Apoc
 */
 
 const fetch = require('node-fetch')
